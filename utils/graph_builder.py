@@ -10,6 +10,9 @@ import ase
 from ase.neighborlist import neighbor_list
 from ase.io import read
 
+import os
+from pathlib import Path
+
 
 def get_host_atoms(filename, am='Li'):
 
@@ -103,5 +106,27 @@ def build_graph_with_am(
     
     return graph
 
+
+def save_graph(graph, graph_id, host_id, base_dir="data/processed/graphs"):
+    """
+    Saves a crystal graph to a file.
+    
+    Args:
+        graph: PyG Data object
+        graph_id: unique ID of a graph (001, 002 or other)
+        host_id: ID of the host structure
+        base_dir: base directory
+    """
+
+    host_dir = Path(base_dir) / f"host_{host_id}"
+    host_dir.mkdir(parents=True, exist_ok=True)
+
+    filepath = host_dir / f"graph_{graph_id}.pt"
+    torch.save(graph, filepath)
+    
+    return filepath
+
+def load_graph(filepath):
+    return torch.load(filepath, weights_only=False)
 
 
