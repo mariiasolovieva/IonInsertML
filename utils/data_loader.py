@@ -6,17 +6,6 @@ import logging
 from ase import Atoms
 from ase.io import read 
 
-"""
-In run file set paths and initials:
-
-train_file_csv = './training_Li1.csv'
-host_file = './POSCAR_host'
-host_energy = 
-int_atom = 'Li'
-int_atom_energy = 
-
-"""
-
 
 def load_train(train_file_csv, target_col='energy', coords_cols=None):
     """read training set"""
@@ -43,4 +32,3 @@ def load_host(host_file):
     return host
 
 
-    

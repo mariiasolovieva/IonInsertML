@@ -11,20 +11,45 @@ from bayesian_opt.bo import BayesianOptimization
 from utils.data_loader import load_train, load_host
 
 
-"""body of the script"""
 
 """
 In run file set paths and initials:
 
 train_file_csv = './training_Li1.csv'
+
 host_file = './POSCAR_host'
-host_energy = 
-int_atom = 'Li'
-int_atom_energy = 
-batch_size = 
-strategy = 'constant_liar'
+
+host_energy =  
+    (host energy for y_new calculations)
+
+int_atom = 'Li' 
+    (type of atom insterted in the host structure)
+
+int_atom_energy =  
+    (reference energy for y_new calculations)
+
+batch_size = 3 
+    (how many new suggested points will be calculated at the same time)
+
+strategy = 'constant_liar' 
+    (how too choose points for batch formation)
+
+N = 
+    (number of active learning iterations)
+
+vasp_parameters = {}
+    (VASP calculation parameters)
 
 """
+
+
+def compute_y(total_energy, host_energy, int_atom_energy, n_int_atoms):
+    """intercalation energy computation for a new configuration suggested by BO"""
+
+    return (total_energy - host_energy - int_atom_energy) / n_int_atoms
+
+
+"""body of the script"""
 
 host_atoms = load_host(host_file)
 host_positions = host_atoms.get_positions()
@@ -44,18 +69,29 @@ bo = BayesianOptimization(
     random_state=42         
 )
 
-bo.fit(X_init, y_init)
-X_new = bo.suggest(batch_size=batch_size, xi=0.01, strategy=strategy)
+X_train, y_train = X_init.copy(), y_init.copy()
 
-for i in range(X_new.shape[0]):
-    atoms = host_atoms.append(int_atom, positions=[X_new[i]])
+for _ in range(N):
+
+    bo.fit(X_init, y_init)
+    X_new = bo.suggest(batch_size=batch_size, xi=0.01, strategy=strategy)
+
+    for i in range(X_new.shape[0]):
+        atoms = host_atoms.append(int_atom, positions=[X_new[i]])
+
+        # run VASP
+
+        # read results
+
+        # compute_y
+
+        # update training set
 
 
 
-def compute_y(total_energy, host_energy, int_atom_energy, n_int_atoms):
-    """intercalation energy computation for a new configuration suggested by BO"""
 
-    return (total_energy - host_energy - int_atom_energy) / n_int_atoms
+
+
 
 
 
