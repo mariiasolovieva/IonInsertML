@@ -1,0 +1,87 @@
+2026-03-16 06:23:28,511 - INFO - BO Test Mode Parameters:
+2026-03-16 06:23:28,511 - INFO -   train_file_csv: /root/ion/IonInsertML/data/training_Li1.csv
+2026-03-16 06:23:28,511 - INFO -   host_file: /root/ion/IonInsertML/data/POSCAR_host
+2026-03-16 06:23:28,511 - INFO -   params_file: /root/ion/IonInsertML/data/INCAR
+2026-03-16 06:23:28,511 - INFO -   host_energy: -10.5
+2026-03-16 06:23:28,512 - INFO -   int_atom_energy: -2.3
+2026-03-16 06:23:28,512 - INFO -   int_atom: Li
+2026-03-16 06:23:28,512 - INFO -   batch_size: 3
+2026-03-16 06:23:28,512 - INFO -   strat: constant_liar
+2026-03-16 06:23:28,512 - INFO -   N: 5
+2026-03-16 06:23:28,512 - INFO -   n_candidates: 500
+2026-03-16 06:23:28,512 - INFO -   rmin: 1.45
+2026-03-16 06:23:28,512 - INFO -   rmin_insrt: 1.34
+2026-03-16 06:23:28,512 - INFO -   random_state: 42
+2026-03-16 06:23:28,512 - INFO -   xi: 0.01
+2026-03-16 06:23:28,512 - INFO -   test_mode: True
+2026-03-16 06:23:28,512 - INFO - Reading VASP parameters from /root/ion/IonInsertML/data/INCAR
+2026-03-16 06:23:28,513 - INFO - Successfully read 21 parameters from INCAR
+2026-03-16 06:23:28,513 - INFO - Loading host structure from /root/ion/IonInsertML/data/POSCAR_host
+2026-03-16 06:23:28,526 - INFO - Loading training data from /root/ion/IonInsertML/data/training_Li1.csv
+2026-03-16 06:23:28,554 - INFO - Loaded 25 training points
+2026-03-16 06:23:28,555 - INFO - Energy range: [0.472, 3.762]
+2026-03-16 06:23:28,555 - INFO - Initializing Bayesian Optimization
+2026-03-16 06:23:28,592 - INFO - Results saved to bo_test_results
+2026-03-16 06:23:28,592 - INFO - Iteration 1/5
+2026-03-16 06:23:28,592 - INFO - Current training set size: 25
+2026-03-16 06:23:29,750 - INFO - Suggested 3 new configurations
+2026-03-16 06:23:29,750 - INFO - Running dummy calculation in calc_0_0
+2026-03-16 06:23:29,751 - ERROR - Dummy calculation failed for calc_0_0: DummyVasp.get_potential_energy() takes 1 positional argument but 2 were given
+2026-03-16 06:23:29,751 - INFO - Running dummy calculation in calc_0_1
+2026-03-16 06:23:29,751 - ERROR - Dummy calculation failed for calc_0_1: DummyVasp.get_potential_energy() takes 1 positional argument but 2 were given
+2026-03-16 06:23:29,752 - INFO - Running dummy calculation in calc_0_2
+2026-03-16 06:23:29,752 - ERROR - Dummy calculation failed for calc_0_2: DummyVasp.get_potential_energy() takes 1 positional argument but 2 were given
+2026-03-16 06:23:29,755 - INFO - Results saved to bo_test_results
+2026-03-16 06:23:29,755 - INFO - Iteration 1 completed. Training set size: 25
+2026-03-16 06:23:29,755 - INFO - Energy stats - min: 0.472, max: 3.762, mean: 1.448
+2026-03-16 06:23:29,755 - INFO - Iteration 2/5
+2026-03-16 06:23:29,755 - INFO - Current training set size: 25
+2026-03-16 06:23:30,771 - INFO - Suggested 3 new configurations
+2026-03-16 06:23:30,772 - INFO - Running dummy calculation in calc_1_0
+2026-03-16 06:23:30,772 - ERROR - Dummy calculation failed for calc_1_0: DummyVasp.get_potential_energy() takes 1 positional argument but 2 were given
+2026-03-16 06:23:30,773 - INFO - Running dummy calculation in calc_1_1
+2026-03-16 06:23:30,773 - ERROR - Dummy calculation failed for calc_1_1: DummyVasp.get_potential_energy() takes 1 positional argument but 2 were given
+2026-03-16 06:23:30,773 - INFO - Running dummy calculation in calc_1_2
+2026-03-16 06:23:30,773 - ERROR - Dummy calculation failed for calc_1_2: DummyVasp.get_potential_energy() takes 1 positional argument but 2 were given
+2026-03-16 06:23:30,778 - INFO - Results saved to bo_test_results
+2026-03-16 06:23:30,778 - INFO - Iteration 2 completed. Training set size: 25
+2026-03-16 06:23:30,778 - INFO - Energy stats - min: 0.472, max: 3.762, mean: 1.448
+2026-03-16 06:23:30,778 - INFO - Iteration 3/5
+2026-03-16 06:23:30,778 - INFO - Current training set size: 25
+2026-03-16 06:23:31,760 - INFO - Suggested 3 new configurations
+2026-03-16 06:23:31,760 - INFO - Running dummy calculation in calc_2_0
+2026-03-16 06:23:31,761 - ERROR - Dummy calculation failed for calc_2_0: DummyVasp.get_potential_energy() takes 1 positional argument but 2 were given
+2026-03-16 06:23:31,761 - INFO - Running dummy calculation in calc_2_1
+2026-03-16 06:23:31,761 - ERROR - Dummy calculation failed for calc_2_1: DummyVasp.get_potential_energy() takes 1 positional argument but 2 were given
+2026-03-16 06:23:31,762 - INFO - Running dummy calculation in calc_2_2
+2026-03-16 06:23:31,762 - ERROR - Dummy calculation failed for calc_2_2: DummyVasp.get_potential_energy() takes 1 positional argument but 2 were given
+2026-03-16 06:23:31,764 - INFO - Results saved to bo_test_results
+2026-03-16 06:23:31,764 - INFO - Iteration 3 completed. Training set size: 25
+2026-03-16 06:23:31,764 - INFO - Energy stats - min: 0.472, max: 3.762, mean: 1.448
+2026-03-16 06:23:31,764 - INFO - Iteration 4/5
+2026-03-16 06:23:31,764 - INFO - Current training set size: 25
+2026-03-16 06:23:32,829 - INFO - Suggested 3 new configurations
+2026-03-16 06:23:32,830 - INFO - Running dummy calculation in calc_3_0
+2026-03-16 06:23:32,830 - ERROR - Dummy calculation failed for calc_3_0: DummyVasp.get_potential_energy() takes 1 positional argument but 2 were given
+2026-03-16 06:23:32,831 - INFO - Running dummy calculation in calc_3_1
+2026-03-16 06:23:32,831 - ERROR - Dummy calculation failed for calc_3_1: DummyVasp.get_potential_energy() takes 1 positional argument but 2 were given
+2026-03-16 06:23:32,832 - INFO - Running dummy calculation in calc_3_2
+2026-03-16 06:23:32,832 - ERROR - Dummy calculation failed for calc_3_2: DummyVasp.get_potential_energy() takes 1 positional argument but 2 were given
+2026-03-16 06:23:32,836 - INFO - Results saved to bo_test_results
+2026-03-16 06:23:32,836 - INFO - Iteration 4 completed. Training set size: 25
+2026-03-16 06:23:32,837 - INFO - Energy stats - min: 0.472, max: 3.762, mean: 1.448
+2026-03-16 06:23:32,837 - INFO - Iteration 5/5
+2026-03-16 06:23:32,837 - INFO - Current training set size: 25
+2026-03-16 06:23:33,842 - INFO - Suggested 3 new configurations
+2026-03-16 06:23:33,842 - INFO - Running dummy calculation in calc_4_0
+2026-03-16 06:23:33,842 - ERROR - Dummy calculation failed for calc_4_0: DummyVasp.get_potential_energy() takes 1 positional argument but 2 were given
+2026-03-16 06:23:33,843 - INFO - Running dummy calculation in calc_4_1
+2026-03-16 06:23:33,843 - ERROR - Dummy calculation failed for calc_4_1: DummyVasp.get_potential_energy() takes 1 positional argument but 2 were given
+2026-03-16 06:23:33,843 - INFO - Running dummy calculation in calc_4_2
+2026-03-16 06:23:33,843 - ERROR - Dummy calculation failed for calc_4_2: DummyVasp.get_potential_energy() takes 1 positional argument but 2 were given
+2026-03-16 06:23:33,846 - INFO - Results saved to bo_test_results
+2026-03-16 06:23:33,846 - INFO - Iteration 5 completed. Training set size: 25
+2026-03-16 06:23:33,847 - INFO - Energy stats - min: 0.472, max: 3.762, mean: 1.448
+2026-03-16 06:23:33,847 - INFO - Optimization completed successfully!
+2026-03-16 06:23:33,847 - INFO - Final training set size: 25
+2026-03-16 06:23:33,847 - INFO - Best energy found: 0.471533 eV

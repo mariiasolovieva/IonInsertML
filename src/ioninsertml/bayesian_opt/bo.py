@@ -200,7 +200,7 @@ class BayesianOptimization:
 
     @staticmethod
     def _min_distance_to_host_atoms(point, host_atoms, rprimd):
-        dists = [min_image_distance(atom, point, rprimd) for atom in host_atoms]
+        dists = [BayesianOptimization.min_image_distance(atom, point, rprimd) for atom in host_atoms]
         return np.min(dists)
 
 
@@ -216,7 +216,7 @@ class BayesianOptimization:
     def _min_distance_within_set(points, new_point, rprimd):
         if len(points) == 0:
             return np.inf
-        dists = [min_image_distance(p, new_point, rprimd) for p in points]
+        dists = [BayesianOptimization.min_image_distance(p, new_point, rprimd) for p in points]
         return np.min(dists)
 
 
@@ -253,7 +253,7 @@ class BayesianOptimization:
             if k > 1:
                 for i in range(k):
                     for j in range(i+1, k):
-                        dist = min_image_distance(points[i], points[j], self.rprimd)
+                        dist = BayesianOptimization.min_image_distance(points[i], points[j], self.rprimd)
                         if dist <= self.rmin_insrt:
                             valid = False
                             break
