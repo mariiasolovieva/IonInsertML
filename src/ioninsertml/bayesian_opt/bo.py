@@ -39,13 +39,20 @@ class BayesianOptimization:
         a fixed random state for results reproducibility
     """
 
-    def __init__(self, int_atom='Li', n_candidates=100, rmin=1.45, rmin_insrt=1.34, host=None, rprimd=None, random_state=None):
+    def __init__(self, int_atom='Li', n_candidates=100, rmin=1.45, rmin_insrt=1.34, host=None, rprimd=None, random_state=None, kernel=None, gpr_=None):
         self.int_atom = int_atom
         self.n_candidates = n_candidates
         self.rmin = rmin
         self.rmin_insrt = rmin_insrt
         self.host = host
         self.rprimd = rprimd
+        self.kernel = kernel
+        self.gpr_ = gpr_
+        if self.kernel is None:
+            self.kernel = RBF(length_scale=1.0) + WhiteKernel(noise_level=1e-6)
+        if self.gpr_ is None:
+            self.gpr_ = GaussianProcessRegressor(kernel=self.kernel, normalize_y=False)
+
 
         if random_state is None:
             self.rng = np.random 
@@ -77,10 +84,6 @@ class BayesianOptimization:
         
         X_scaled = self.scaler_X.fit_transform(X)
         y_scaled = self.scaler_y.fit_transform(y.reshape(-1, 1)).ravel()
-
-        kernel = RBF(length_scale=1.0) + WhiteKernel(noise_level=1e-6)
-        self.gpr_ = GaussianProcessRegressor(kernel=kernel, normalize_y=True)
-
         self.gpr_.fit(X_scaled, y_scaled)
 
         return self
@@ -127,7 +130,7 @@ class BayesianOptimization:
             y = self.y_
 
         mu, sigma = self._predict(X)    
-        mu_sample_opt = np.min(self.y_)
+        mu_sample_opt = np.min(y)
 
         with np.errstate(divide='warn'):
             imp = mu_sample_opt - mu - xi
@@ -200,7 +203,7 @@ class BayesianOptimization:
 
     @staticmethod
     def _min_distance_to_host_atoms(point, host_atoms, rprimd):
-        dists = [min_image_distance(atom, point, rprimd) for atom in host_atoms]
+        dists = [BayesianOptimization.min_image_distance(atom, point, rprimd) for atom in host_atoms]
         return np.min(dists)
 
 
@@ -216,7 +219,7 @@ class BayesianOptimization:
     def _min_distance_within_set(points, new_point, rprimd):
         if len(points) == 0:
             return np.inf
-        dists = [min_image_distance(p, new_point, rprimd) for p in points]
+        dists = [BayesianOptimization.min_image_distance(p, new_point, rprimd) for p in points]
         return np.min(dists)
 
 
@@ -253,7 +256,7 @@ class BayesianOptimization:
             if k > 1:
                 for i in range(k):
                     for j in range(i+1, k):
-                        dist = min_image_distance(points[i], points[j], self.rprimd)
+                        dist = BayesianOptimization.min_image_distance(points[i], points[j], self.rprimd)
                         if dist <= self.rmin_insrt:
                             valid = False
                             break

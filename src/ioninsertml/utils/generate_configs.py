@@ -65,7 +65,7 @@ def generate_config(host_atoms, rprimd, n_candidates=100, rmin=1.45, n_configs=2
 
 def generate_n_configs(host_atoms, rprimd, n_insrt, n_candidates=100, rmin=1.45, rmin_insrt=1.34, n_configs=25):
 
-        """
+    """
     A function to generate a random position for n inserted atoms
 
     INPUT:
