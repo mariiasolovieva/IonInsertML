@@ -42,6 +42,30 @@ N = 100
     (number of active learning iterations)
 """
 
+def parse_args():
+    parser = argparse.ArgumentParser(description='Active learning with VASP')
+    parser.add_argument('--train_file', type=str, required=True,
+                        help='Path to training CSV file')
+    parser.add_argument('--host_file', type=str, required=True,
+                        help='Path to POSCAR of host structure')
+    parser.add_argument('--params_file', type=str, default='INCAR',
+                        help='Path to INCAR file with VASP parameters')
+    parser.add_argument('--host_energy', type=float, required=True,
+                        help='Energy of the host structure (eV)')
+    parser.add_argument('--int_atom', type=str, default='Li',
+                        help='Type of intercalating atom')
+    parser.add_argument('--int_atom_energy', type=float, required=True,
+                        help='Reference energy per intercalating atom (eV)')
+    parser.add_argument('--batch_size', type=int, default=3,
+                        help='Number of suggestions per iteration')
+    parser.add_argument('--strategy', type=str, default='constant_liar',
+                        help='Batch sampling strategy')
+    parser.add_argument('--n_iterations', type=int, default=100,
+                        help='Number of active learning iterations')
+    parser.add_argument('--vasp_pp_path', type=str, default=None,
+                        help='Path to VASP pseudopotentials (VASP_PP_PATH)')
+    return parser.parse_args()
+
 
 def compute_y(total_energy, host_energy, int_atom_energy, n_int_atoms):
     """intercalation energy computation for a new configuration suggested by BO"""
